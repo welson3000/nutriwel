@@ -3,13 +3,13 @@ import { BetterAuthReactAdapter } from "@neondatabase/auth/react";
 import { neon } from "@neondatabase/serverless";
 
 export const authClient = createAuthClient(
-  "https://ep-late-art-acxidtbt.neonauth.sa-east-1.aws.neon.tech/neondb/auth",
+  import.meta.env.VITE_NEON_AUTH_URL,
   {
     adapter: BetterAuthReactAdapter(),
   }
 );
 
 // Neon SQL client for direct PostgreSQL queries
-const DATABASE_URL = "postgresql://neondb_owner:npg_RAl48mfsWQKg@ep-late-art-acxidtbt-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require";
+const DATABASE_URL = import.meta.env.VITE_NEON_DATABASE_URL;
 export const sql = neon(DATABASE_URL);
 
